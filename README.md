@@ -1,2 +1,9 @@
 # Novel-Computer-Vision-Model
+
+Kyle Rauba, 4/7/26
+
 CNN with Separable Convolution, Pooling and Dropout
+
+I decided to add separable convolutions to my vision model. Separable convolutions have a few benefits, one being that it reduces the amount of parameters necessary to build out my architecture. It is also efficient and ran quite quickly on my machine without any parallelization or fancy hacks with only 8.2 GB VRAM. Some limits are that it was a bit difficult to put together conceptually. I had to create the separable convolution class above my model architecture, calling it after calling the Class, def __init__ and super() lines, before any other layers were called. Another challenge I faced was overfitting. I nudged the learning rate from 0.0005 to 0.01 to 0.005, which gave me an incredible accuracy of 94%, but the test set accuracy was only 41%, classic overfitting. I then added a dropout layer to hopefully reduce this, setting the strength to 0.25. 
+
+Separable convolutions are different from regular architecture because of the reasons I already mentioned above (less parameters and computational cost), but more specifically this occurs because the network performs significantly less calculations than a normal CNN. This makes separable convolutions extremely useful for massive networks, and perfect for the casual coder who doesn't have incredible hardware to run massive models on. If I can save a ton of computational power, I can design larger, more complicated networks with larger datasets and more features, and still get it to run in a respectable amount of time. Outside of that, separable convolutions are useful for things like 3D vision and language processing, but personally I would just use it to optimize bigger and better models.
